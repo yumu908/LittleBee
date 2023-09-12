@@ -444,6 +444,10 @@ namespace Synchronize.Game.Lockstep.GateServer.Modules
             roomProcess.LaunchGameData = launchGameData;
             roomProcess.RoomId = ptRoom.RoomId;
             roomProcess.Port = launchGameData.RSPort;
+
+            string path =  Environment.CurrentDirectory.Replace("GateServer", "RoomServer").Replace("netcoreapp6", "netcoreapp6.0");
+            dllPath = Path.Combine(path, dllPath);
+            
             var psi = new ProcessStartInfo("dotnet", " "+ dllPath + 
                 " -key " + launchGameData.ConnectionKey + 
                 " -port " + launchGameData.RSPort + 
